@@ -10,7 +10,7 @@ data class Doggo(
     val lifeSpan: String,
     val color: String,
     val image: Image,
-    val weight: Int = (1..5).random(),
+    val weight: Int = (10..50).random(),
     val description: String
 ) {
 

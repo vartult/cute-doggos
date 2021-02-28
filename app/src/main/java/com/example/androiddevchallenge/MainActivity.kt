@@ -16,13 +16,18 @@
 package com.example.androiddevchallenge
 
 import android.os.Bundle
+import androidx.navigation.compose.NavHost
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigate
+import androidx.navigation.compose.rememberNavController
+import com.example.androiddevchallenge.data.repository.DoggosRepository
+import com.example.androiddevchallenge.navigation.Navigation
+import com.example.androiddevchallenge.ui.details.DetailsScreen
+import com.example.androiddevchallenge.ui.home.HomeScreen
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 class MainActivity : AppCompatActivity() {
@@ -39,8 +44,26 @@ class MainActivity : AppCompatActivity() {
 // Start building your app here!
 @Composable
 fun MyApp() {
-    Surface(color = MaterialTheme.colors.background) {
-        Text(text = "Ready... Set... GO!")
+    val doggos = DoggosRepository.doggosList
+    val navController = rememberNavController()
+    NavHost(navController, startDestination = Navigation.HomeScreen.title) {
+        composable(Navigation.HomeScreen.title) {
+            HomeScreen(
+                doggos = doggos,
+                navigateToDetails = { doggo ->
+                    navController.navigate(Navigation.DetailScreen.title + "/${doggo.id}")
+                }
+            )
+        }
+        composable(Navigation.DetailScreen.title + "/{id}") { backStackEntry ->
+            val doggoId = backStackEntry.arguments?.getString("id")
+            val doggo = doggos.find { it.id == doggoId }
+                ?: throw IllegalStateException("Invalid Dog Id")
+            DetailsScreen(
+                doggo = doggo,
+                navigateBack = { navController.popBackStack() }
+            )
+        }
     }
 }
 

@@ -21,3 +21,17 @@ val purple200 = Color(0xFFBB86FC)
 val purple500 = Color(0xFF6200EE)
 val purple700 = Color(0xFF3700B3)
 val teal200 = Color(0xFF03DAC5)
+
+val infoItemBg = Color(0xFFFC9CA4)
+
+val pastelColors = listOf(
+    Color(0xFFFCD4D4),
+    Color(0xFFFC9CA4),
+    Color(0xFFFCD4C4),
+    Color(0xFFACDCAC),
+    Color(0xFFB4DCDC),
+    Color(0xFF7CD4D4),
+    Color(0xFFCC9494),
+    Color(0xFFA4D4B4),
+    Color(0xFFDB89B2),
+)
