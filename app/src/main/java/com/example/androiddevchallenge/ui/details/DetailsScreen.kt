@@ -85,7 +85,7 @@ private fun Header(
             .fillMaxWidth()
             .aspectRatio(doggo.image.aspectRatio)
             .background(
-                Color.LightGray
+                Color.White
             )
     )
 }

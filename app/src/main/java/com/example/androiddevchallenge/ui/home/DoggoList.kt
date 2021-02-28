@@ -88,7 +88,7 @@ private fun CreateGridItem(
             contentScale = ContentScale.Crop,
             fadeIn = true,
             modifier = Modifier
-                .background(Color.LightGray)
+                .background(Color.White)
                 .aspectRatio(doggo.image.aspectRatio)
         )
         Column(
