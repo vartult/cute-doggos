@@ -15,9 +15,11 @@
  */
 package com.example.androiddevchallenge.ui.home
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -28,6 +30,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Card
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.MaterialTheme
@@ -41,10 +44,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.data.model.Doggo
 import com.example.androiddevchallenge.ui.theme.pastelColors
+import com.example.androiddevchallenge.ui.theme.purpleButtonLight
 import com.example.androiddevchallenge.ui.utils.StaggeredVerticalGrid
 import dev.chrisbanes.accompanist.coil.CoilImage
 
@@ -57,6 +62,22 @@ fun DoggoList(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
     ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 30.dp, horizontal = 5.dp)
+                .horizontalScroll(rememberScrollState())
+                .clickable {
+                },
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            FilterBanner(title = "Hound Dogs")
+            FilterBanner(title = "Mixed Breed Dogs", true)
+            FilterBanner(title = "Companion Breed Dogs")
+            FilterBanner(title = "Sporting Dogs")
+            FilterBanner(title = "Working Dogs")
+            FilterBanner(title = "Hybrid Dogs")
+        }
         StaggeredVerticalGrid(
             maxColumnWidth = 250.dp,
             modifier = Modifier.padding(4.dp)
@@ -97,7 +118,6 @@ private fun CreateGridItem(
                 .background(
                     pastelColors
                         .random()
-                        .copy(alpha = 0.5f)
                 )
                 .padding(vertical = 10.dp, horizontal = 10.dp),
             verticalArrangement = Arrangement.SpaceEvenly
@@ -107,7 +127,7 @@ private fun CreateGridItem(
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                var isSelected = remember {
+                val isSelected = remember {
                     mutableStateOf(false)
                 }
                 Text(
@@ -134,6 +154,28 @@ private fun CreateGridItem(
                     style = MaterialTheme.typography.caption
                 )
             }
+        }
+    }
+}
+
+@Composable
+fun FilterBanner(title: String, selected: Boolean = false) {
+    Card(
+        modifier = Modifier
+            .padding(start = 8.dp, end = 8.dp, top = 8.dp)
+            .size(100.dp, 64.dp)
+            .clip(MaterialTheme.shapes.medium),
+        elevation = 8.dp,
+        border = BorderStroke(1.dp, Color.LightGray),
+        backgroundColor = if (selected) purpleButtonLight else MaterialTheme.colors.surface
+    ) {
+        Column(verticalArrangement = Arrangement.Center) {
+            Text(
+                text = title,
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.caption
+            )
         }
     }
 }

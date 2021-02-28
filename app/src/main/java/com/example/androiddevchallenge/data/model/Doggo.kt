@@ -36,12 +36,8 @@ data class Doggo(
 
     val ageString: String
         get() {
-            val ageInYears = (age.toInt() / 12).toFloat()
-            return if (ageInYears <= 0) {
-                "$age months"
-            } else {
-                "${ageInYears.toInt()} years"
-            }
+            val ageInYears = age.toInt()
+            return "${ageInYears.toInt()} years"
         }
 }
 

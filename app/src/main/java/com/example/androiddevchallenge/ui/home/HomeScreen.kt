@@ -15,8 +15,11 @@
  */
 package com.example.androiddevchallenge.ui.home
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.MaterialTheme
@@ -28,6 +31,9 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.data.model.Doggo
 
 @Composable
@@ -39,6 +45,7 @@ fun HomeScreen(
         topBar = { AppBar() }
     ) {
         Surface(color = MaterialTheme.colors.background) {
+
             DoggoList(doggos, navigateToDetails)
         }
     }
@@ -52,6 +59,7 @@ private fun AppBar() {
             Row(
                 modifier = Modifier
                     .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
 
                 ProvideTextStyle(value = MaterialTheme.typography.h6) {
@@ -64,6 +72,12 @@ private fun AppBar() {
                         }
                     )
                 }
+                Image(
+                    painter = painterResource(id = R.drawable.ic_pet),
+                    contentDescription = "Paw",
+                    modifier = Modifier
+                        .size(24.dp)
+                )
             }
         }
     )

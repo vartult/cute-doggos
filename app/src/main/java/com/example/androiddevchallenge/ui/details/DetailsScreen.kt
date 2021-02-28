@@ -15,6 +15,7 @@
  */
 package com.example.androiddevchallenge.ui.details
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,12 +23,17 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -37,16 +43,22 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.data.model.Doggo
 import com.example.androiddevchallenge.ui.theme.infoItemBg
+import com.example.androiddevchallenge.ui.theme.purple200
+import com.example.androiddevchallenge.ui.theme.purpleButtonLight
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
@@ -56,10 +68,17 @@ fun DetailsScreen(
 ) {
     Surface(color = MaterialTheme.colors.background) {
         Column(
-            modifier = Modifier.verticalScroll(rememberScrollState())
+            modifier = Modifier.fillMaxHeight(),
+            // .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.SpaceEvenly
         ) {
-            Header(doggo = doggo)
-            Info(doggo = doggo)
+            Column(
+                modifier = Modifier.verticalScroll(rememberScrollState())
+            ) {
+                Header(doggo = doggo)
+                Info(doggo = doggo)
+                AdoptButtonBar()
+            }
         }
 
         IconButton(onClick = navigateBack) {
@@ -95,11 +114,31 @@ private fun Info(doggo: Doggo) {
     Column(
         modifier = Modifier.padding(10.dp)
     ) {
-
-        Text(
-            text = doggo.name,
-            style = MaterialTheme.typography.h4
-        )
+        Row(
+            modifier = Modifier
+                .padding(vertical = 5.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = doggo.name,
+                style = MaterialTheme.typography.h4
+            )
+            Row(
+                modifier = Modifier
+                    .padding(vertical = 15.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_location),
+                    contentDescription = "Paw",
+                    modifier = Modifier.size(18.dp)
+                )
+                Text(
+                    text = "Dallas",
+                    style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                )
+            }
+        }
 
         CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
             Text(
@@ -117,7 +156,8 @@ private fun Info(doggo: Doggo) {
         CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
             Text(
                 text = doggo.description,
-                style = MaterialTheme.typography.subtitle1
+                style = MaterialTheme.typography.subtitle1,
+                fontWeight = FontWeight.SemiBold
             )
             Spacer(modifier = Modifier.height(20.dp))
         }
@@ -128,7 +168,8 @@ private fun Info(doggo: Doggo) {
         )
         Spacer(modifier = Modifier.height(5.dp))
         Row(
-            modifier = Modifier.padding(vertical = 5.dp)
+            modifier = Modifier
+                .padding(vertical = 5.dp)
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
@@ -139,7 +180,8 @@ private fun Info(doggo: Doggo) {
         }
 
         Row(
-            modifier = Modifier.padding(horizontal = 30.dp, vertical = 10.dp)
+            modifier = Modifier
+                .padding(horizontal = 30.dp, vertical = 10.dp)
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally)
         ) {
@@ -150,7 +192,62 @@ private fun Info(doggo: Doggo) {
 }
 
 @Composable
-private fun InfoBanner(title: String, value: String) {
+fun AdoptButtonBar() {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Start
+    ) {
+        Button(
+            elevation = null,
+            modifier = Modifier
+                .padding(16.dp)
+                .weight(4f)
+                .height(52.dp),
+            onClick = { /*TODO*/ }
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.ic_paw_print),
+                    contentDescription = null,
+                    alignment = Alignment.Center,
+                    modifier = Modifier
+                        .size(16.dp)
+                        .padding(top = 2.dp, end = 2.dp)
+                )
+                Text(
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.SemiBold,
+                    color = Color.White,
+                    text = "Adopt Me"
+                )
+            }
+        }
+        Button(
+            elevation = null,
+            colors = ButtonDefaults.buttonColors(backgroundColor = purpleButtonLight),
+            modifier = Modifier
+                .padding(top = 16.dp, bottom = 16.dp, end = 16.dp)
+                .weight(1f)
+                .wrapContentWidth()
+                .height(52.dp),
+            onClick = { }
+        ) {
+            Icon(
+                Icons.Filled.Phone, "phone",
+                tint = purple200,
+                modifier = Modifier
+                    .size(48.dp)
+                    .padding(4.dp)
+            )
+        }
+    }
+}
+
+@Composable
+fun InfoBanner(title: String, value: String) {
     Column(
         modifier = Modifier
             .defaultMinSize(
@@ -158,7 +255,7 @@ private fun InfoBanner(title: String, value: String) {
             )
             .background(
                 color = infoItemBg,
-                shape = RoundedCornerShape(10.dp)
+                shape = RoundedCornerShape(4.dp)
             )
             .padding(10.dp),
         verticalArrangement = Arrangement.Center,

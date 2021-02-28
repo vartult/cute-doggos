@@ -23,6 +23,7 @@ val purple700 = Color(0xFF3700B3)
 val teal200 = Color(0xFF03DAC5)
 
 val infoItemBg = Color(0xFFFC9CA4)
+val purpleButtonLight = Color(0xFFDDD6F7)
 
 val pastelColors = listOf(
     Color(0xFFFCD4D4),
