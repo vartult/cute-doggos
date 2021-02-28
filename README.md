@@ -15,7 +15,6 @@ Week 1. A puppy adoption sample app demonstrating building UI with compose.
 
 ## :camera_flash: Screenshots
 
-### Light Theme
 <img src="/results/screenshot_1.png" width="260">&emsp;<img src="/results/screenshot_2.png" width="260">
 
 ## License

@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge.data.repository
 
 import com.example.androiddevchallenge.data.model.Doggo
@@ -50,7 +65,7 @@ object DoggosRepository {
             gender = Doggo.Gender.FEMALE,
             lifeSpan = "13 to 16 years",
             color = "White Black",
-            image = Image("https://www.dogtime.com/assets/uploads/2011/01/file_23146_dalmatian-460x290.jpg",  460, 290),
+            image = Image("https://www.dogtime.com/assets/uploads/2011/01/file_23146_dalmatian-460x290.jpg", 460, 290),
             description = "Best known as the star of Disney’s 101 Dalmatians, this sleek and athletic Dalmatian dog breed has a history that goes back several hundred years. They started out as a coach dog but also served in many other capacities, including hunter, firehouse dog, and circus performer."
         ),
         Doggo(
@@ -62,7 +77,7 @@ object DoggosRepository {
             gender = Doggo.Gender.MALE,
             lifeSpan = "12 to 14 years",
             color = "Black White",
-            image = Image("https://www.dogtime.com/assets/uploads/2011/01/file_22966_english-cocker-spaniel-460x290.jpg",  460, 290),
+            image = Image("https://www.dogtime.com/assets/uploads/2011/01/file_22966_english-cocker-spaniel-460x290.jpg", 460, 290),
             description = "The English Cocker Spaniel is a medium-size dog breed with long ears and a happy disposition. The “Cocker” in their name comes from their days of hunting woodcock in England, although English Cockers have been used to hunt many other types of birds as well."
         ),
         Doggo(
@@ -74,7 +89,7 @@ object DoggosRepository {
             gender = Doggo.Gender.FEMALE,
             lifeSpan = "12 to 14 years",
             color = "Brown Black",
-            image = Image("https://www.dogtime.com/assets/uploads/2011/01/file_23148_finnish-spitz-460x290.jpg",  460, 290),
+            image = Image("https://www.dogtime.com/assets/uploads/2011/01/file_23148_finnish-spitz-460x290.jpg", 460, 290),
             description = "The English Cocker Spaniel is a medium-size dog breed with long ears and a happy disposition. The “Cocker” in their name comes from their days of hunting woodcock in England, although English Cockers have been used to hunt many other types of birds as well."
         ),
         Doggo(
@@ -86,7 +101,7 @@ object DoggosRepository {
             gender = Doggo.Gender.MALE,
             lifeSpan = "12 to 14 years",
             color = " Golden White",
-            image = Image("https://www.dogtime.com/assets/uploads/2011/01/file_22922_german-pinscher-460x290.jpg",  460, 290),
+            image = Image("https://www.dogtime.com/assets/uploads/2011/01/file_22922_german-pinscher-460x290.jpg", 460, 290),
             description = "The German Pinscher dog breed is muscular and agile, powerful yet graceful. A medium-sized dog with an elegant appearance, they’re admired as much for their beauty as for their intelligence."
         ),
         Doggo(
@@ -110,7 +125,7 @@ object DoggosRepository {
             gender = Doggo.Gender.FEMALE,
             lifeSpan = "10 to 13 years",
             color = "Black White",
-            image = Image("https://www.dogtime.com/assets/uploads/2011/01/file_23210_maltipoo-460x290.jpg",  460, 290),
+            image = Image("https://www.dogtime.com/assets/uploads/2011/01/file_23210_maltipoo-460x290.jpg", 460, 290),
             description = "Not actually a dog breed per se, the Maltipoo is a popular cross of the Maltese and Poodle, known for their fun-loving and affectionate nature. Active and charming, they’ll fit into all kinds of homes: apartment or house, family with kids or elderly single."
         ),
         Doggo(

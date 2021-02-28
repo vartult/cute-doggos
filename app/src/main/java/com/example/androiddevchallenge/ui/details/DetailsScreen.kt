@@ -47,7 +47,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.data.model.Doggo
 import com.example.androiddevchallenge.ui.theme.infoItemBg
-import com.example.androiddevchallenge.ui.theme.pastelColors
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
@@ -110,7 +109,6 @@ private fun Info(doggo: Doggo) {
             Spacer(modifier = Modifier.height(20.dp))
         }
 
-
         Text(
             text = "About",
             style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
@@ -144,7 +142,7 @@ private fun Info(doggo: Doggo) {
             modifier = Modifier.padding(horizontal = 30.dp, vertical = 10.dp)
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally)
-        ){
+        ) {
             InfoBanner(title = "Lifespan", value = doggo.lifeSpan)
             InfoBanner(title = "Height", value = doggo.height)
         }
